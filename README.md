@@ -1,0 +1,2 @@
+# logfuscate
+Obfuscating Panther Logs

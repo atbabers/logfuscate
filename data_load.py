@@ -1,6 +1,13 @@
 from gql import gql, Client
 from gql.transport.aiohttp import AIOHTTPTransport
-import re
+import logging, re
+
+
+# Initialize the logger
+logging.basicConfig(format='%(message)s', level=logging.WARNING)
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
 
 def fetch_data(sql_query, config):
     # Check and modify the SQL query for LIMIT clause
@@ -74,8 +81,7 @@ def fetch_data(sql_query, config):
         
         # if it's still running, print a message and keep polling
         if query_data["dataLakeQuery"]["status"] == "running":
-            print(query_data["dataLakeQuery"]["message"])
-            continue
+            logger.info('Retrieving events from Data Lake...')
         
         # if it's not running & it's not completed, then it's
         # either cancelled or it has errored out. In this case,

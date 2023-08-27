@@ -28,6 +28,4 @@ def load_config():
 
     return config
 
-# For testing purposes
-# config = load_config()
-# print(config)
+

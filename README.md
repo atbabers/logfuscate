@@ -40,6 +40,10 @@ usage: logfuscate.py [-h] [-v] (-s SQL_QUERY | -d DEOBFUSCATE)
   The SQL query to fetch data from Panther's API.
 - `-d DEOBFUSCATE`, `--deobfuscate DEOBFUSCATE`  
   Path to the file to deobfuscate.
+- `-f OBFUSCATE`, `--file OBFUSCATE`  
+  Path to the file to deobfuscate.
+- `-fd FILE_DEOBFUSCATE`, `--file-deobfuscate FILE_DEOBFUSCATE`  
+  Path to the file to deobfuscate.
 
 ---
 
@@ -53,6 +57,11 @@ python logfuscate.py -s "<SQL_QUERY>"
 
 Replace `<SQL_QUERY>` with the actual SQL query. The SQL Query does need to be enclosed in single or double quotes.
 
+```bash
+python logfuscate.py -f "/path/to/file"
+```
+
+Replace `/path/to/file` with the actual path to the obfuscated file.
 ---
 
 ### Deobfuscation
@@ -65,5 +74,10 @@ python logfuscate.py -d "<PATH_TO_OBFUSCATED_FILE>"
 
 Replace `<PATH_TO_OBFUSCATED_FILE>` with the actual path to the obfuscated file.
 
+```bash
+python logfuscate.py -fd "/path/to/file"
+```
+
+Replace `/path/to/file` with the actual path to the obfuscated file.
 ---
 

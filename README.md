@@ -28,7 +28,7 @@ The deobfuscation is done by replacing the obfuscated values with the original v
 
 ## Usage
 ```
-usage: logfuscate.py [-h] [-v] (-s SQL_QUERY | -d DEOBFUSCATE)
+usage: logfuscate.py [-h] [-v] (-s SQL_QUERY | -d DEOBFUSCATE | -f OBFUSCATE | -fd FILE_DEOBFUSCATE)
 ```
 
 ### Options
@@ -40,7 +40,7 @@ usage: logfuscate.py [-h] [-v] (-s SQL_QUERY | -d DEOBFUSCATE)
   The SQL query to fetch data from Panther's API.
 - `-d DEOBFUSCATE`, `--deobfuscate DEOBFUSCATE`  
   Path to the file to deobfuscate.
-- `-f OBFUSCATE`, `--file OBFUSCATE`  
+- `-f FILE_OBFUSCATE`, `--file FILE_OBFUSCATE`  
   Path to the file to deobfuscate.
 - `-fd FILE_DEOBFUSCATE`, `--file-deobfuscate FILE_DEOBFUSCATE`  
   Path to the file to deobfuscate.

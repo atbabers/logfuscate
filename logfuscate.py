@@ -1,4 +1,5 @@
-import argparse, json, time, logging
+import argparse, json, time, logging, yaml
+from yaml_processor import process_yaml_file
 from config import load_config
 from utils.utils import save_results
 import get_schemas, data_load, obfuscation, deobfuscation
@@ -11,15 +12,17 @@ logger = logging.getLogger(__name__)
 def banner():
     print("""#    _                 __                      _        
 #   | |    ___  __ _  / _| _  _  ___ __  __ _ | |_  ___ 
-#   | |__ / _ \/ _` ||  _|| || |(_-</ _|/ _` ||  _|/ -_)
-#   |____|\___/\__, ||_|   \_,_|/__/\__|\__,_| \__|\___|
+#   | |__ / _ \\/ _` ||  _|| || |(_-</ _|/ _` ||  _|/ -_)
+#   |____|\\___/\\__, ||_|   \\_,_|/__/\\__|\\__,_| \\__|\\___|
 #              |___/                                    """)
     print("Developer: Asante Babers | Version: 0.9")
-    print("Description: Obfuscate and deobfuscate events using Panthers API." + "\n")
+    print("Description: Obfuscate and deobfuscate events for Panther." + "\\n")
+
 
 def main():
     # Load the Panther API configurations
     banner()
+
     config = load_config()
     patterns = PATTERNS
     
@@ -28,6 +31,9 @@ def main():
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("-s", "--sql_query", type=str, help="The SQL query to fetch data from Panther's API.")
     group.add_argument("-d", "--deobfuscate", type=str, help="Path to the file to deobfuscate.")
+    group.add_argument("-f", "--file", help="Path to YAML file to encryptthe Tests key", type=str)
+    group.add_argument("-fd", "--file-deobfuscation", help="Path to YAML file to decrypt the Tests key", type=str)
+
     args = parser.parse_args()
 
     # Set the verbose mode
@@ -36,6 +42,14 @@ def main():
         deobfuscation.VERBOSE = True
         logger.setLevel(logging.DEBUG)
     
+    #If file is the input
+    if args.file:
+        process_yaml_file(args.file, "obfuscation", patterns)
+        return
+    if args.file_deobfuscation:
+        process_yaml_file(args.file_deobfuscation, "deobfuscation", patterns)
+        return
+
     # If we're deobfuscating
     if args.deobfuscate:
         with open(args.deobfuscate, 'r') as f:  # Filepath

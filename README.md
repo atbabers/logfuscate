@@ -1,17 +1,20 @@
-# Logfuscate
+# This repository is being publicly archived in favor of a built-in PAT functionaility support. The PR can be found [here](https://github.com/panther-labs/panther_analysis_tool/pull/354).
+
+---
+###### Logfuscate
 
 Logfuscate is a tool designed for obfuscating and deobfuscating logs pulled from [Panther's API](https://docs.panther.com/panther-developer-workflows/api/operations/data-lake-queries). Panther is a platform that helps you detect threats with log data, improve cloud security posture, and perform advanced data analysis. This tool will help you to obfuscate the logs before sharing them with others and deobfuscate them when needed.
 
 ---
 
-## Developer
+###### Developer
 
 - Name: [Asante Babers](https://atbabers.com/)
 - Version: 0.9
 
 ---
 
-## How It Works
+###### How It Works
 
 The tool fetches the data from Panther's API using the provided SQL query. The data is then processed, and each log is obfuscated. The obfuscation is done by replacing the values of certain fields with a fixed string or a random value. The fields to be obfuscated and the replacement values are defined in the `regexes.py` file.
 
@@ -19,19 +22,18 @@ The deobfuscation is done by replacing the obfuscated values with the original v
 
 ---
 
-## Installation
+###### Installation
 
 1. Clone the repository or download the source code.
 2. Install the required packages by running `pip install -r requirements.txt`.
 
 ---
-
-## Usage
+######  Usage
 ```
 usage: logfuscate.py [-h] [-v] (-s SQL_QUERY | -d DEOBFUSCATE | -f OBFUSCATE | -fd FILE_DEOBFUSCATE)
 ```
 
-### Options
+###### Options
 - `-h`, `--help`  
   Show this help message and exit.
 - `-v`, `--verbose`  
@@ -47,7 +49,7 @@ usage: logfuscate.py [-h] [-v] (-s SQL_QUERY | -d DEOBFUSCATE | -f OBFUSCATE | -
 
 ---
 
-### Obfuscation
+###### Obfuscation
 
 To obfuscate the logs, you need to fetch the data from Panther's API using an SQL query and then obfuscate the data.
 
@@ -64,7 +66,7 @@ python logfuscate.py -f "/path/to/file"
 Replace `/path/to/file` with the actual path to the obfuscated file.
 ---
 
-### Deobfuscation
+###### Deobfuscation
 
 To deobfuscate the logs, you need to have a file with the obfuscated data.
 

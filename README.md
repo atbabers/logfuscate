@@ -1,4 +1,4 @@
-# This repository is being publicly archived in favor of a built-in PAT functionaility support. The PR can be found [here](https://github.com/panther-labs/panther_analysis_tool/pull/354).
+# The public archiving of this repository is due to the integration of logfuscate features into the Panther Analysis Tool (PAT). The PR can be found [here](https://github.com/panther-labs/panther_analysis_tool/pull/354).
 
 ---
 ###### Logfuscate
